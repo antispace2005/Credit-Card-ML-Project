@@ -1,0 +1,35 @@
+\section{Problem Framing and Data Understanding}
+
+\subsection{Problem Being Solved}
+This project solves a supervised machine learning problem: predicting whether a credit card client will default on the next month's payment based on demographic information, repayment history, bill statements, and payment amounts.
+
+\subsection{Target Variable}
+The target variable is \texttt{default payment next month}. In simple terms, this means whether a person is expected to fail to make the required credit card payment on time in the next billing cycle.
+
+To make this clear for readers with no finance background:
+\begin{itemize}
+	\item A credit card has a \textit{minimum payment} due each month.
+	\item If a customer does not pay that required amount by the due date, this is considered a \textbf{default} for that period.
+	\item The model predicts this event one month ahead.
+\end{itemize}
+
+Although the dataset was collected in Taiwan, the meaning of default is not country-specific. It represents a general credit-risk event used in banking worldwide.
+
+Label encoding in the dataset is:
+\begin{itemize}
+	\item \texttt{0} = non-default
+	\item \texttt{1} = default
+\end{itemize}
+
+\subsection{Classification Type}
+This is a \textbf{binary classification} task because the target has two classes only: default or non-default.
+
+\subsection{Expected Challenges}
+The main expected challenges in this dataset are:
+\begin{itemize}
+	\item \textbf{Feature engineering needs:} important predictive signals are spread across monthly billing, payment, and repayment-status columns, so engineered aggregate and ratio features are needed.
+	\item \textbf{Missing values handling:} missing or unclear entries can reduce model reliability and must be checked and treated carefully.
+	\item \textbf{Feature selection decisions:} the dataset contains many related variables, so we must decide which original and engineered features to keep to reduce redundancy and improve generalization.
+	\item \textbf{Class imbalance risk:} defaults are typically fewer than non-defaults, so evaluation should emphasize metrics like precision, recall, and F1-score, not accuracy alone.
+	\item \textbf{Data noise and coding inconsistencies:} categorical fields may include uncommon/invalid codes and require controlled recoding before modeling.
+\end{itemize}

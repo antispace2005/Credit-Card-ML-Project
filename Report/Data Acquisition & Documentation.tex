@@ -1,0 +1,27 @@
+\section{Data Acquisition \& Documentation}
+
+\subsection{Dataset Source}
+The dataset used in this project is:
+\begin{itemize}
+	\item \textbf{Default of Credit Card Clients (UCI Machine Learning Repository)}
+	\item Link: \url{https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients}
+\end{itemize}
+
+In implementation, the dataset is fetched programmatically from UCI through \texttt{ucimlrepo} (dataset id \texttt{350}), then converted into a working dataframe for preprocessing and modeling.
+
+\subsection{Modifications Made}
+The following modifications were applied to the raw data:
+
+\begin{itemize}
+	\item \textbf{Column-name standardization:} original fields (e.g., \texttt{X1..X23}, \texttt{Y}, and alternative target naming) were mapped to consistent readable names such as \texttt{LIMIT\_BAL}, \texttt{PAY\_0}, and \texttt{default payment next month}.
+	\item \textbf{Target normalization:} the target was normalized to a one-dimensional series and unified under one label: \texttt{default payment next month}.
+	\item \textbf{Repayment-status harmonization:} \texttt{PAY\_*} variables were aligned to a shared category space, then remapped into semantic categories (e.g., \texttt{paid\_in\_full}, \texttt{revolving}, \texttt{delay\_2\_months}, \texttt{delay\_3\_plus\_months}).
+	\item \textbf{Categorical recoding:} \texttt{EDUCATION}, \texttt{MARRIAGE}, and \texttt{SEX} were recoded into cleaner categorical labels.
+	\item \textbf{Specific label merge:} \texttt{EDUCATION} values \texttt{5} and \texttt{6} were merged into \texttt{4} (others) before final category labeling.
+	\item \textbf{Invalid category filtering:} rows with \texttt{EDUCATION = 0} or \texttt{MARRIAGE = 0} were removed as invalid category codes.
+	\item \textbf{Duplicate handling policy:} duplicates were intentionally \textbf{kept} in the current notebook version (no deduplication removal step).
+	\item \textbf{Feature engineering:} aggregate and behavioral features were added, including totals, trends, ratios, and utilization features (e.g., \texttt{TOTAL\_BILL\_AMT}, \texttt{AVG\_UTILIZATION}, \texttt{MAX\_UTILIZATION}).
+	\item \textbf{Feature-selection cleanup:} redundant predictors were removed (e.g., \texttt{BILL\_AMT2--BILL\_AMT6}, \texttt{UTILIZATION\_2--UTILIZATION\_6}, and \texttt{ID} when present).
+	\item \textbf{Train/test split:} data was split using stratified \(80/20\) train-test partition with fixed random seed \texttt{42} to preserve class balance.
+	\item \textbf{Scaling transformation:} \texttt{StandardScaler} was fit on training numeric columns only, then applied to test data to avoid leakage.
+\end{itemize}

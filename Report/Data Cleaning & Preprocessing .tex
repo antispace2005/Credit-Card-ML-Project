@@ -1,0 +1,31 @@
+\section{Data Cleaning \& Preprocessing}
+
+\subsection{Handling Missing Values}
+Missing values were audited using a data-quality summary table that reported missing counts and percentages per column. In this workflow, no standalone imputation method (such as mean/median/mode filling) was applied. Instead, data quality control was handled by:
+\begin{itemize}
+	\item validating target and schema consistency,
+	\item filtering invalid categorical codes (e.g., \texttt{EDUCATION = 0}, \texttt{MARRIAGE = 0}), and
+	\item preserving valid records for downstream feature engineering.
+\end{itemize}
+
+\subsection{Encoding Categorical Variables}
+Categorical preprocessing focused on semantic recoding and category harmonization:
+\begin{itemize}
+	\item repayment status columns (\texttt{PAY\_0} to \texttt{PAY\_6}) were aligned to a shared category space,
+	\item repayment values were remapped into ordered semantic categories (e.g., \texttt{paid\_in\_full}, \texttt{revolving}, \texttt{delay\_3\_plus\_months}),
+	\item \texttt{EDUCATION}, \texttt{MARRIAGE}, and \texttt{SEX} were recoded to clean categorical labels,
+	\item \texttt{EDUCATION} values \texttt{5} and \texttt{6} were merged into \texttt{4} (others) before final labeling.
+\end{itemize}
+At this stage, categorical variables were standardized as categorical features; a separate full one-hot encoding pipeline was specified for later modeling stages.
+
+\subsection{Scaling Numerical Features (If Needed)}
+Numerical scaling was applied using \texttt{StandardScaler} after train/test split:
+\begin{itemize}
+	\item numeric columns were selected from \texttt{X\_train},
+	\item scaler was fit only on training data,
+	\item the same fitted scaler was used to transform both training and test sets.
+\end{itemize}
+This prevents information leakage from test data into training.
+
+\subsection{Handling Class Imbalance (If Needed)}
+Class distribution was checked during the data audit and EDA phases. The notebook handled imbalance conservatively by using a \textbf{stratified} train/test split so both classes keep similar proportions in train and test sets. No oversampling/undersampling method (e.g., SMOTE) was applied in this stage.
