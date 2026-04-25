@@ -1,0 +1,8 @@
+PWD /home/abdelrahman/Desktop/Spring/ML/Credit-Card-ML-Project/Report
+INPUT /usr/share/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/abdelrahman/Desktop/Spring/ML/Credit-Card-ML-Project/Report/role3_report.tex
+OUTPUT role3_report.log
+INPUT /usr/share/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm

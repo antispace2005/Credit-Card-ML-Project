@@ -11,3 +11,17 @@
 \contentsline {subsection}{\numberline {3.2}Encoding Categorical Variables}{4}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Scaling Numerical Features (If Needed)}{4}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Handling Class Imbalance (If Needed)}{4}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Exploratory Data Analysis (EDA)}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Target Class Distribution}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Age Distribution vs. Default Status}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Repayment Behavior (PAY\_0) Analysis}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Feature Correlation Heatmap}{7}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Modeling --- Baseline Classifier (Logistic Regression)}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Model Information}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Model Configuration}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Training Pipeline}{8}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Performance Evaluation}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Summary Metrics}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Confusion Matrix}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}ROC Curve}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Feature Coefficient Analysis}{11}{subsection.6.4}%
