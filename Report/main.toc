@@ -20,8 +20,8 @@
 \contentsline {subsection}{\numberline {5.1}Model Information}{7}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Model Configuration}{8}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Training Pipeline}{8}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Performance Evaluation}{9}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Summary Metrics}{9}{subsection.6.1}%
+\contentsline {section}{\numberline {6}Performance Evaluation}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Summary Metrics}{8}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Confusion Matrix}{9}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}ROC Curve}{10}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Feature Coefficient Analysis}{11}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.4}Feature Coefficient Analysis}{10}{subsection.6.4}%

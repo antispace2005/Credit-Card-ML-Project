@@ -14,7 +14,9 @@ The model was configured with the following parameters:
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{lll}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Justification} \\
 \midrule
@@ -23,18 +25,12 @@ max\_iter & 1000 & Ensures convergence without ConvergenceWarning on this datase
 class\_weight & balanced & Compensates for the 78/22 non-default/default split \\
 random\_state & 42 & Matches Role 1 and Role 2 seeds for reproducibility \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Model Configuration Parameters}
 \end{table}
 
 \subsection{Training Pipeline}
-The model was trained strictly on the training partition. The test set was never accessed during training to prevent data leakage. Figure 5 confirms the training and test dimensions after the full preprocessing pipeline. The training set contains 23,945 samples and 69 features, reflecting the one-hot encoding of all categorical variables (PAY\_0 through PAY\_6, EDUCATION, MARRIAGE, SEX). The 69-feature space is the result of the full ColumnTransformer pipeline applied by Role 1.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{sec3/image1.png}
-  \caption{Training and test dimensions after preprocessing}
-\end{figure}
+The model was trained strictly on the training partition. The test set was never accessed during training to prevent data leakage. After the full preprocessing pipeline, the training set contains 23,945 samples and 69 features, while the test set contains 5,987 samples and 69 features. The 69-feature space is the result of the full ColumnTransformer pipeline applied by Role 1, including one-hot encoding of all categorical variables (PAY\_0 through PAY\_6, EDUCATION, MARRIAGE, SEX).
 
 \section{Performance Evaluation}
 
@@ -43,7 +39,9 @@ The trained model was evaluated on the held-out test set of 5,987 samples. Three
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{lll}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Metric} & \textbf{Value} & \textbf{Interpretation} \\
 \midrule
@@ -51,20 +49,27 @@ Accuracy & 76.83\% & Overall correct predictions --- less meaningful due to clas
 F1-Score (Default class) & 0.5162 & Primary metric --- harmonic mean of Precision and Recall for defaulters \\
 ROC-AUC & 0.7634 & Model ranks a random defaulter above a non-defaulter 76\% of the time \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Summary Metrics}
 \end{table}
 
-\begin{verbatim}
-              precision    recall  f1-score   support
-
-Non-Default (0)       0.87      0.83      0.85      4661
-Default (1)           0.48      0.56      0.52      1326
-
-   accuracy                               0.77      5987
-  macro avg           0.67      0.69      0.68      5987
-weighted avg          0.78      0.77      0.77      5987
-\end{verbatim}
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{precision} & \textbf{recall} & \textbf{f1-score} & \textbf{support} \\
+\midrule
+\textbf{Non-Default (0)} & 0.87 & 0.83 & 0.85 & 4661 \\
+\textbf{Default (1)} & 0.48 & 0.56 & 0.52 & 1326 \\
+\midrule
+\textbf{accuracy} &  &  & 0.77 & 5987 \\
+\textbf{macro avg} & 0.67 & 0.69 & 0.68 & 5987 \\
+\textbf{weighted avg} & 0.78 & 0.77 & 0.77 & 5987 \\
+\bottomrule
+\end{tabular}
+\caption{Classification Report}
+\label{tab:classification_report}
+\end{table}
 
 \subsection{Confusion Matrix}
 \textbf{Interpretation:} True Negatives (TN = 3,860) represent non-defaulting clients correctly cleared by the model. True Positives (TP = 740) are defaulters correctly flagged. The two error types are False Positives (FP = 801) --- non-defaulters incorrectly labelled as at-risk --- and False Negatives (FN = 586) --- defaulters the model failed to detect.
